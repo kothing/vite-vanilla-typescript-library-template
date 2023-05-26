@@ -1,10 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const packageJson = require("./package.json");
 
-const getPackageName = () => {
-  return packageJson.name;
-};
-
 const config = {
   compilationOptions: {
     preferredConfigPath: "./tsconfig.json",
@@ -12,7 +8,7 @@ const config = {
   entries: [
     {
       filePath: "./src/index.ts",
-      outFile: `./dist/${getPackageName()}.es.d.ts`,
+      outFile: `./dist/${packageJson.name}.es.d.ts`,
       output: {
         noBanner: true,
       },
