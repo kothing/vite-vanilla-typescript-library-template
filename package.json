@@ -2,8 +2,17 @@
   "name": "vite-typescript-library-template",
   "private": true,
   "version": "0.0.1",
+  "description": "Create a new typescript library project in just 1 second",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kothing/vite-typescript-library-template"
+  },
+  "homepage": "https://github.com/kothing/vite-typescript-library-template#readme",
+  "author": "kothing",
+  "files": [
+    "dist"
+  ],
   "main": "./dist/vite-typescript-library-template.es.js",
-  "module": "./dist/vite-typescript-library-template.es.js",
   "exports": {
     ".": {
       "import": "./dist/vite-typescript-library-template.es.js",
