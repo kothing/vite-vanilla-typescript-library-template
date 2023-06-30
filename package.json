@@ -1,6 +1,5 @@
 {
   "name": "vite-typescript-library-template",
-  "private": true,
   "version": "0.0.1",
   "description": "Create a new typescript library project in just 1 second",
   "repository": {
