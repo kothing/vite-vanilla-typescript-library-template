@@ -32,26 +32,47 @@ const pkgInfo = `/**
  * repository: ${packageJson.repository.url}
  */`;
 
-export default defineConfig({
-  base: "./",
-  build: {
-    lib: {
-      entry: path.resolve(__dirname, "src/index.ts"),
-      name: getPackageNameCamelCase(),
-      formats: ["es", "umd", "iife"],
-      fileName: (format) => fileName[format],
+export default defineConfig(({ command, mode }) => {
+  // when scripts command: vite
+  if (command === "serve") {
+    // do something
+  }
+  // when scripts command: vite build
+  else if (command === "build") {
+    // do something
+    fs.rmSync("./dist", { recursive: true, force: true });
+  }
+
+  // such as command line: vite --mode development
+  if (mode === "development") {
+    // do something
+  }
+  // such as command line: vite build --mode production
+  else if (mode === "production") {
+    // do something
+  }
+  
+  return {
+    base: "./",
+    build: {
+      lib: {
+        entry: path.resolve(__dirname, "src/index.ts"),
+        name: getPackageNameCamelCase(),
+        formats: ["es", "umd", "iife"],
+        fileName: (format) => fileName[format],
+      },
     },
-  },
-  plugins: [
-    banner(pkgInfo),
-    styleInject(),
-    // dts({
-    //   insertTypesEntry: true,
-    // }),
-  ],
-  resolve: {
-    alias: {
-      "@/*": path.resolve(__dirname, "src"),
+    plugins: [
+      banner(pkgInfo),
+      styleInject(),
+      // dts({
+      //   insertTypesEntry: true,
+      // }),
+    ],
+    resolve: {
+      alias: {
+        "@/*": path.resolve(__dirname, "src"),
+      },
     },
-  },
+  };
 });
