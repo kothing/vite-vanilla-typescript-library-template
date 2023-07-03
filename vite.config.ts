@@ -1,3 +1,4 @@
+import fs from "fs";
 import path from "path";
 import { defineConfig } from "vite";
 import banner from "vite-plugin-banner";
@@ -33,14 +34,14 @@ const pkgInfo = `/**
  */`;
 
 export default defineConfig(({ command, mode }) => {
-  // when scripts command: vite
+  // when command line: vite
   if (command === "serve") {
     // do something
   }
-  // when scripts command: vite build
+  // when command line: vite build
   else if (command === "build") {
     // do something
-    fs.rmSync("./dist", { recursive: true, force: true });
+    // fs.rmdirSync("./dist", { recursive: true });
   }
 
   // such as command line: vite --mode development
