@@ -32,7 +32,7 @@ const pkgInfo = `/**
  * repository: ${packageJson.repository.url}
  */`;
 
-module.exports = defineConfig({
+export default defineConfig({
   base: "./",
   build: {
     lib: {
