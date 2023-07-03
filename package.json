@@ -24,7 +24,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "dev": "vite --host --open",
+    "dev": "vite --open",
     "build": "tsc && vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts",
     "test": "jest --runInBand",
     "test:coverage": "jest --runInBand --coverage",
