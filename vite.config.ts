@@ -55,6 +55,11 @@ export default defineConfig(({ command, mode }) => {
   
   return {
     base: "./",
+    server: {
+      port: 8080,
+      https: false,
+      open: true
+    },
     build: {
       lib: {
         entry: path.resolve(__dirname, "src/index.ts"),
