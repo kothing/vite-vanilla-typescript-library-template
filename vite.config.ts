@@ -6,6 +6,40 @@ import banner from "vite-plugin-banner";
 import packageJson from "./package.json";
 import styleInject from "./plugins/style-inject";
 
+// node version
+const major = process.version.match(/v([0-9]*).([0-9]*)/)[1];
+const minor = process.version.match(/v([0-9]*).([0-9]*)/)[2];
+
+/**
+ * cpSync
+ * @param {string} source
+ * @param {string} destination
+ */
+const cpSync = (source, destination) => {
+  if (Number(major) < 16 || (Number(major) == 16 && Number(minor) < 7)) {
+    if (fs.existsSync(destination)) {
+      fs.rmSync(destination, { recursive: true });
+    }
+
+    fs.mkdirSync(destination, { recursive: true });
+    const rd = fs.readdirSync(source);
+
+    for (const fd of rd) {
+      const sourceFullName = source + "/" + fd;
+      const destFullName = destination + "/" + fd;
+      const lstatRes = fs.lstatSync(sourceFullName);
+      if (lstatRes.isFile()) {
+        fs.copyFileSync(sourceFullName, destFullName);
+      }
+      if (lstatRes.isDirectory()) {
+        cpSync(sourceFullName, destFullName);
+      }
+    }
+  } else {
+    fs.cpSync(source, destination, { force: true, recursive: true });
+  }
+};
+
 const getPackageName = () => {
   return packageJson.name;
 };
