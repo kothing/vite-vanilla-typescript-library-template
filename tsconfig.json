@@ -15,7 +15,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitThis": false,
-    "noImplicitReturns": true,
+    "noImplicitReturns": false,
     "forceConsistentCasingInFileNames": true,
     "types": ["vite/client", "node", "jest"]
   },
